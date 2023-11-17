@@ -29,6 +29,10 @@ const opzioni = {
                 }
             ]
         }
+    },
+
+    methods: {
+        
     }
 };
 
