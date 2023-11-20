@@ -3,6 +3,7 @@ const{ createApp } = Vue;
 const opzioni = {
     data: function () {
         return {
+            newItem: "",
             toDo: [{
                 text: "Clean your shoes",
                 done: true,
@@ -32,12 +33,34 @@ const opzioni = {
     },
 
     methods: {
-        
-    }
-};
+        //Sbarro gli elementi cliccati
+        changeStatus(i) {
+            if(this.toDdo[i].done) {
+                this.toDo[i] = false;
+            } else{
+                this.toDo[i].done = true;
+            }
+        },
+        //aggiungo pulsante elimina
+        remove(i) {
+            this.toDo.splice( i, 1);
+        },
+        //aggiungo elementi
+        addElement() {
+            let element = { 
+                text : this.newItem, 
+                done: false 
+            };
 
-mounted() {
+            this.toDo.push(element);
+            this.newItem = "";
+        }
+    },
+    
+    mounted() {
     console.log("Pagina caricata");
-}
+    }
+
+};
 
 createApp(opzioni).mount("#app");
